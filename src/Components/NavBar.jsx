@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 import { AuthContext } from "./../Context/AuthContext";
 
 function NavBar() {
-  const { isLoggedIn, signOut } = useContext(AuthContext);
+  const { isLoggedIn, signOut,  userInfo} = useContext(AuthContext);
 
   const signUserOut = () => signOut()
 
@@ -19,6 +19,9 @@ function NavBar() {
           <Nav className="me-auto">
           {isLoggedIn ? (
               <>
+                <div>
+                  <h5 className="text-white">Welcome {userInfo.username}</h5>
+                </div>
                 <Nav.Link
                   style={{ textDecoration: "none" }}
                   className="navLink navHome"

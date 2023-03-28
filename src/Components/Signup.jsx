@@ -14,8 +14,29 @@ function Signup(props) {
 
   const { signUp, signIn } = useContext(AuthContext);
   const  registerUser = async(e) => {
+    e.preventDefault();
+    //valite the user input
 
+
+    //post request to to sign up api
+    const request = await signUp(username, email, password);
+    if(request) {
+      const signInProcess = await signIn(username, password);
+      if(signInProcess) {
+        navigate("/");
+      }
+
+    }
+    //Feedback, or interaction with the user.
+    //if the user is registered, Perforn a sign in
+    //Redirect the homepage
+  
   }
+
+
+  // checkIfEmailAleryExist = async (email) => {
+  //   //check if email already exist
+  // }
 
 
   return (

@@ -6,12 +6,15 @@ import { AuthContext } from "../Context/AuthContext";
 
 function Login() {
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const { signIn } = useContext(AuthContext);
   const logIn = () => {
-
+    const signInProcess = signIn(username, password);
+    if(signInProcess) {
+      navigate("/");
+    }
   };
 
   return (
@@ -20,19 +23,17 @@ function Login() {
       <Form>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label className="text-white font-weight-light">
-            Email address or <Link to="/Signup">Signup</Link>
+            Username or <Link to="/Signup">Signup</Link>
           </Form.Label>
           <div className="inputData">
             <Form.Control
               type="email"
               placeholder="Enter email"
-              onChange={(event) => setEmail(event.target.value)}
-              value={email}
+              onChange={(event) => setUsername(event.target.value)}
+              value={username}
             />
           </div>
-          <Form.Text className="text-muted ">
-            We'll never share your email with anyone else.
-          </Form.Text>
+
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
