@@ -21,7 +21,7 @@ const App = () => {
     <AuthContext.Provider value={auth}>
       <div>
         <NavBar/>
-        <div className="tweetList">
+        <div className="tweetList"> 
           <TweetContext.Provider value={{ tweetList, setTweetList, tweetText, setTweetText }}>
             <Routes>
               <Route path="/login" element={<Login setActiveUser={setActiveUser} />} />
